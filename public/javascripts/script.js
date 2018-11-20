@@ -14,5 +14,10 @@ const dictate = () => {
     recognition.onresult = (event) => {
         const speechToText = event.results[0][0].transcript;
         paragraph.textContent = speechToText;
+
+        $.ajax({
+            url: 'http://innhubhai.herokuapp.com/' + speechToText,
+            method: 'POST'
+        });
     }
 };
